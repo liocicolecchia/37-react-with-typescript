@@ -1,8 +1,13 @@
-function Todos() {
+interface TodosProps {
+  items: string[];
+}
+
+function Todos({ items }: TodosProps) {
   return (
     <ul>
-      <li>Learn React</li>
-      <li>Learn TypeScript</li>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
     </ul>
   );
 }
