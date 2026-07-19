@@ -1,12 +1,11 @@
-import { SubmitEvent, useRef } from "react";
+import { SubmitEvent, useRef, useContext } from "react";
 
+import { TodosContext } from "../store/todos-context";
 import classes from "./NewTodo.module.css";
 
-interface NewTodoProps {
-  onAddTodo: (text: string) => void;
-}
+function NewTodo() {
+  const todosCtx = useContext(TodosContext);
 
-function NewTodo({ onAddTodo }: NewTodoProps) {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   function submitHandler(event: SubmitEvent) {
@@ -19,7 +18,7 @@ function NewTodo({ onAddTodo }: NewTodoProps) {
       return;
     }
 
-    onAddTodo(enteredText);
+    todosCtx.addTodo(enteredText);
   }
 
   return (
