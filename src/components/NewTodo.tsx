@@ -1,6 +1,10 @@
 import { SubmitEvent, useRef } from "react";
 
-function NewTodo() {
+interface NewTodoProps {
+  onAddTodo: (text: string) => void;
+}
+
+function NewTodo({ onAddTodo }: NewTodoProps) {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   function submitHandler(event: SubmitEvent) {
@@ -12,6 +16,8 @@ function NewTodo() {
       // throw error
       return;
     }
+
+    onAddTodo(enteredText);
   }
 
   return (
