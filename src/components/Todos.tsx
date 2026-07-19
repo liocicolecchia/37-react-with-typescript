@@ -1,5 +1,6 @@
 import Todo from "../models/todo";
 import TodoItem from "./TodoItem";
+import classes from "./Todos.module.css";
 
 interface TodosProps {
   items: Todo[];
@@ -7,7 +8,7 @@ interface TodosProps {
 
 function Todos({ items }: TodosProps) {
   return (
-    <ul>
+    <ul className={classes.todo}>
       {items.map((item) => (
         <TodoItem key={item.id} text={item.text} />
       ))}
